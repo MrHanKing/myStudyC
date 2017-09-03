@@ -33,6 +33,7 @@ void con_str(char*s,char y,int f,int i,int b) {
         return;
     }
     s[i] = s[i+f];
+    printf("%s",&s[i]);
     if(s[i] == y) {
         f++;
         return con_str(s,y,f,i,b);
