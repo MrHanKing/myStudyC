@@ -13,7 +13,7 @@ void fun(char *ss,int m);
 
 void main()
 {
-    char *ss = "abcdefghij";
+    char ss[] = "abcdefghij";
     int m = 4;
 
     fun(ss,m);
@@ -25,7 +25,7 @@ void fun(char *ss,int m)
     char *a;
     int len = strlen(ss);
     int j = 0;
-    a = malloc(sizeof(char) * (m+1));
+    a = (char*)malloc(sizeof(char) * (m+1));
     for (int i = 0; i < len; ++i) {
         if (i < m) {
             a[i] = ss[i];
