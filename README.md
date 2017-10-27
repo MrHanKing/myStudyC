@@ -1,2 +1,2 @@
 # myStudyC
-myself study C
+myself study C/C++
