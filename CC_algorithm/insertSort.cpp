@@ -48,18 +48,15 @@ vector<int> sortElement(vector<int>& array)
     }
 
     for (int i = 1; i < size; ++i) {
-        for (int j = 0; j < i; ++j) {
-            if (array[i] < array[j]){
-                temp = array[i];
-                for (int k = i; k > j ; --k) {
-                    array[k] = array[k - 1];
-                }
-                array[j] = temp;
-                break;
-            }
+        temp = array[i];
+        int j = i;
+        while (j - 1 >= 0 && array[j - 1] > temp)
+        {
+            array[j] = array[j - 1];
+            --j;
         }
+        array[j] = temp;
     }
-
     return array;
 }
 
