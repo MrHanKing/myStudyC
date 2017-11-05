@@ -1,25 +1,27 @@
-#include <vector>
-#include <string>
-#include <iostream>
-#include <map>
-#include <utility>
-
-using namespace std;
+//
+// Created by HanJun on 2017/11/05.
+//
 
 
 // 归并排序, 分治排序
+#include <vector>
+#include <string>
+#include <iostream>
+#include <list>
+#include <ctime>
+#include <random>
+
+using namespace std;
+
 vector<int> sortElement(vector<int>& array);
 vector<int> mergeLeftAndRight(vector<int>& subArray1, vector<int>& subArray2);
+vector<int> createAndShowVector(int num);
 
 int main(int argc, char** argv)
 {
     vector<int> haveSort,output;
 
-    haveSort.push_back(4);
-    haveSort.push_back(3);
-    haveSort.push_back(1);
-    haveSort.push_back(6);
-    haveSort.push_back(4);
+    haveSort = createAndShowVector(5);
 
     if (haveSort.empty())
     {
@@ -29,7 +31,7 @@ int main(int argc, char** argv)
 
     output = sortElement(haveSort);
 
-    for ( vector<int>::iterator i = output.begin(); i != output.end() ; ++i) {
+    for ( auto i = output.begin(); i != output.end() ; ++i) {
         cout << *i << endl;
     }
     return 0;
@@ -45,7 +47,7 @@ vector<int> sortElement(vector<int>& array)
         return array;
     }
     mid = array.size() / 2;
-    cout << "mid = " << mid << endl;
+//    cout << "mid = " << mid << endl;
 
     leftElement.assign(array.begin(), array.begin() + mid);
     rightElement.assign(array.begin() + mid, array.end());
@@ -87,4 +89,30 @@ vector<int> mergeLeftAndRight(vector<int>& subArray1, vector<int>& subArray2)
     }
 
     return mergeLeftAndRight;
+}
+
+vector<int> createAndShowVector(int num)
+{
+    vector<int> vec;
+    int x;
+//    srand((unsigned)time(NULL));
+    std::default_random_engine generator;
+    std::uniform_int_distribution<int> distribution(1,100);
+    for (int i = 0; i < num; ++i) {
+        x = distribution(generator);
+        vec.push_back(x);
+    }
+
+    // show random vec
+    cout << "生成的随机数组：" << endl;
+    int i = 0;
+    for (auto iter = vec.begin(); iter != vec.end() ; ++iter) {
+        cout << *iter << " ";
+        ++i;
+        if (i % 10 == 0) {
+            cout << endl;
+        }
+    }
+
+    return vec;
 }
